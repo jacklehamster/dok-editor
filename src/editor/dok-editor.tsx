@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Language } from "../language/lang-utils";
 import { Editor } from '@monaco-editor/react';
 import { ObjEditor } from "./obj-editor";
@@ -13,14 +13,28 @@ interface Props {
 }
 
 export function DokEditor({
-    code: initialCode,
-    language: initialLanguage,
+    code: codeChanged,
+    language: languageChanged,
     onCodeChange,
 }: Props = {}) {
     const { language, setLanguage, code, setCode } = useCode({
-        initialCode,
-        initialLanguage,
+        initialCode: codeChanged,
+        initialLanguage: languageChanged,
     });
+
+    useEffect(() => {
+        if (codeChanged) {
+            setCode(codeChanged);
+        }
+    }, [codeChanged, setCode]);
+
+    useEffect(() => {
+        if (languageChanged) {
+            setLanguage(languageChanged);
+        }
+    }, [languageChanged, setLanguage]);
+
+
     const [editor, setEditor] = useState(false);
     const updateCode = useCallback((value?: string) => {
         setCode((code) => {
