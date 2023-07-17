@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Language } from "../../dist/language/lang-utils";
+import { Language } from "../language/lang-utils";
 
 interface Props {
     setEditor(value: boolean): void;

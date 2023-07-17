@@ -21,9 +21,7 @@ function updateCodeForLanguage(code, previousLanguage, language) {
 
 function NodeRenderer(_ref) {
   var obj = _ref.obj;
-  var entries = React.useMemo(function () {
-    return !obj ? [] : Object.entries(obj);
-  }, [obj]);
+  var entries = !obj ? [] : Object.entries(obj);
   return React__default.createElement("div", null, entries.map(function (_ref2) {
     var key = _ref2[0],
       value = _ref2[1];

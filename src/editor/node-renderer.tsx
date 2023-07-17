@@ -1,11 +1,11 @@
-import React, { useMemo } from "react";
+import React from "react";
 
 interface Props {
     obj: any;
 }
 
 export function NodeRenderer({obj}: Props) {
-    const entries = useMemo(() => !obj ? [] : Object.entries(obj), [obj]);
+    const entries = !obj ? [] : Object.entries(obj);
     return <div>
         {entries.map(([key, value]) => {
             return <div key={key} style={{ marginLeft: 5, backgroundColor: Array.isArray(obj) ? "lemonchiffon" : "beige"}}>
