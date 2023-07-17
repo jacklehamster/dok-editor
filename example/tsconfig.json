@@ -16,6 +16,6 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
+  "include": ["src", "../src/editor/Select.tsx"],
   "exclude": ["node_modules", "build"]
 }

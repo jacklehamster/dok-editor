@@ -1,10 +1,10 @@
 import React from "react";
 import { Language } from "../language/lang-utils";
 interface Props {
-    editor: boolean;
-    code: string;
-    setCode(code: string): void;
-    language: Language;
+    code?: string;
+    onCodeChange?(code: string): void;
+    language?: Language;
+    onLanguageChange?(lang: Language): void;
 }
-export declare function DokEditor({ editor, language, code, setCode }: Props): React.JSX.Element;
+export declare function DokEditor({ code: initialCode, language: initialLanguage, onCodeChange, }?: Props): React.JSX.Element;
 export {};

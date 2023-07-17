@@ -5,7 +5,7 @@ interface Props {
 }
 
 export function NodeRenderer({obj}: Props) {
-    const entries = useMemo(() => Object.entries(obj), [obj]);
+    const entries = useMemo(() => !obj ? [] : Object.entries(obj), [obj]);
     return <div>
         {entries.map(([key, value]) => {
             return <div key={key} style={{ marginLeft: 5, backgroundColor: Array.isArray(obj) ? "lemonchiffon" : "beige"}}>
