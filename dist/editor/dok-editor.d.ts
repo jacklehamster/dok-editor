@@ -6,5 +6,5 @@ interface Props {
     language?: Language;
     onLanguageChange?(lang: Language): void;
 }
-export declare function DokEditor({ code: initialCode, language: initialLanguage, onCodeChange, }?: Props): React.JSX.Element;
+export declare function DokEditor({ code: codeChanged, language: languageChanged, onCodeChange, onLanguageChange, }?: Props): React.JSX.Element;
 export {};

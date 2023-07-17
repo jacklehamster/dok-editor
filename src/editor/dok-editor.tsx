@@ -16,6 +16,7 @@ export function DokEditor({
     code: codeChanged,
     language: languageChanged,
     onCodeChange,
+    onLanguageChange,
 }: Props = {}) {
     const { language, setLanguage, code, setCode } = useCode({
         initialCode: codeChanged,
@@ -48,7 +49,10 @@ export function DokEditor({
     }, [onCodeChange, setCode]);
 
     return <div>
-        <Select setEditor={setEditor} setLanguage={setLanguage} />
+        <Select setEditor={setEditor} setLanguage={language => {
+            setLanguage(language);
+            onLanguageChange?.(language);
+        }} />
         {!editor && <Editor height="80vh" language={language} value={code} onChange={updateCode} />}
         {editor && <ObjEditor code={code} language={language} />}
     </div>;

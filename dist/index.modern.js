@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { Editor } from '@monaco-editor/react';
 import { parse, stringify } from 'yaml';
 
@@ -143,17 +143,28 @@ function useCode(_temp) {
 
 function DokEditor(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
-    initialCode = _ref.code,
-    initialLanguage = _ref.language,
-    onCodeChange = _ref.onCodeChange;
+    codeChanged = _ref.code,
+    languageChanged = _ref.language,
+    onCodeChange = _ref.onCodeChange,
+    onLanguageChange = _ref.onLanguageChange;
   var _useCode = useCode({
-      initialCode: initialCode,
-      initialLanguage: initialLanguage
+      initialCode: codeChanged,
+      initialLanguage: languageChanged
     }),
     language = _useCode.language,
-    setLanguage = _useCode.setLanguage,
+    _setLanguage = _useCode.setLanguage,
     code = _useCode.code,
     setCode = _useCode.setCode;
+  useEffect(function () {
+    if (codeChanged) {
+      setCode(codeChanged);
+    }
+  }, [codeChanged, setCode]);
+  useEffect(function () {
+    if (languageChanged) {
+      _setLanguage(languageChanged);
+    }
+  }, [languageChanged, _setLanguage]);
   var _useState = useState(false),
     editor = _useState[0],
     setEditor = _useState[1];
@@ -169,7 +180,10 @@ function DokEditor(_temp) {
   }, [onCodeChange, setCode]);
   return React.createElement("div", null, React.createElement(Select, {
     setEditor: setEditor,
-    setLanguage: setLanguage
+    setLanguage: function setLanguage(language) {
+      _setLanguage(language);
+      onLanguageChange === null || onLanguageChange === void 0 ? void 0 : onLanguageChange(language);
+    }
   }), !editor && React.createElement(Editor, {
     height: "80vh",
     language: language,
