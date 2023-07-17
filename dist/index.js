@@ -185,5 +185,7 @@ function DokEditor(_temp) {
 }
 
 exports.DokEditor = DokEditor;
+exports.getObject = getObject;
+exports.updateCodeForLanguage = updateCodeForLanguage;
 exports.useCode = useCode;
 //# sourceMappingURL=index.js.map

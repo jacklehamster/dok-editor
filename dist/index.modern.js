@@ -181,5 +181,5 @@ function DokEditor(_temp) {
   }));
 }
 
-export { DokEditor, useCode };
+export { DokEditor, getObject, updateCodeForLanguage, useCode };
 //# sourceMappingURL=index.modern.js.map
