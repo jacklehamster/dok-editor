@@ -72,5 +72,9 @@
    "files": [
       "dist"
    ],
-   "homepage": "https://github.com/jacklehamster/dok-editor#readme"
+   "homepage": "https://github.com/jacklehamster/dok-editor#readme",
+   "dependencies": {
+      "@monaco-editor/react": "^4.5.1",
+      "yaml": "^2.3.1"
+   }
 }
